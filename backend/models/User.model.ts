@@ -14,6 +14,9 @@ export default class User extends Model {
   @Column({ type: DataType.STRING, field: "name" })
   declare name: string;
 
+  @Column({ type: DataType.STRING, field: "tags" })
+  declare tags: string; // Tags used for searching
+
   // Relations
   @HasMany(() => Content, "userId")
   declare contents: Content[];
