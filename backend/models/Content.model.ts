@@ -22,6 +22,9 @@ export default class Content extends Model {
   @Column({ type: DataType.STRING, field: "url" })
   declare url: string;
 
+  @Column({ type: DataType.STRING, field: "title" })
+  declare title: string;
+
   @Column({
     type: DataType.STRING,
     field: "status",
