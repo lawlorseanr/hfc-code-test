@@ -58,6 +58,9 @@ app.get(
 // If the content does not exist, return 404 status code
 // If the content is already approved, you can't change the status, return 400 status code
 
+// Search endpoint
+// Search by user title, user tags and content title
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
