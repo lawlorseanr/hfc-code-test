@@ -19,6 +19,8 @@ const GlobalStyle = createGlobalStyle`
 const initialState = {
   dashboard: {
     users: [],
+    loading: false,
+    showContentFor: [],
   },
 };
 

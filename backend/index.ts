@@ -26,7 +26,14 @@ app.use(
 
 // Get users route
 app.get("/users", async (req: Request, res) => {
-  const users = await User.findAll();
+  const users = await User.findAll({
+    include: [
+      {
+        model: Content,
+        as: "contents"
+      }
+    ]
+  });
   res.json(users);
 });
 
@@ -47,9 +54,8 @@ app.get(
     >
   ) => {
     const userId = req.params["userId"];
-
-    // TODO: Get content for user
-    res.json([]);
+    const content = await Content.findAll({ where: { userId }})
+    res.json(content);
   }
 );
 
