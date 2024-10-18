@@ -6,4 +6,7 @@ export const UsersListContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const UserContainer = styled.div``;
+export const UserContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

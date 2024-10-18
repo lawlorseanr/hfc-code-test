@@ -14,6 +14,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: 'Roboto', sans-serif;
   }
+
+  body, html {
+    background-color: #E0E0E0;
+  }
 `;
 
 const initialState = {
