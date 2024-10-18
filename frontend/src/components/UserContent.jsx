@@ -12,18 +12,6 @@ export const UserContent = ({user}) => {
         return <SeeContent id={user.id} />
     }
 
-    user.contents.forEach((c) => {
-        const rando = Math.random();
-        if (rando < 0.333) {
-            c.status = "approved";
-        } else if (rando < 0.666) {
-            c.status = "rejected";
-        } else {
-            c.status = "pending";
-        }
-
-    })
-
     return (
         <ContentsContainer>
             {user.contents.map((content => 

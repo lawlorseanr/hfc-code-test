@@ -27,4 +27,5 @@ const Button = styled.div`
     font-size: 10px;
     justify-content: center;
     border-radius: 20px;
+    cursor: pointer;
 `
