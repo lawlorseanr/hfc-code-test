@@ -32,6 +32,9 @@ app.use(
   })
 );
 
+// body
+app.use(express.json());
+
 // App routes
 app.get("/users", getUsers);
 app.post("/users/search", search)

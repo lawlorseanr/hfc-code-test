@@ -33,6 +33,7 @@ export const ContentFooter = ({ content }) => {
                 payload: updatedUsers
             });
         } catch (e) {
+            alert("Unable to update content!")
             console.error(e);
         } finally {
             setIsLoading(false);
