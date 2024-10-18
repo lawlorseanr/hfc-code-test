@@ -1,5 +1,5 @@
 import { updateContent } from "../../services/content.service";
-import { getUsers } from "../../services/user.service";
+import { getUsers, searchUsers } from "../../services/user.service";
 import { DashboardActions } from "../action-types/dashboard-action-types";
 
 export const onLoadDashboardUsers = () => async (dispatch) => {
@@ -54,5 +54,21 @@ export const handleSeeContent = ({ id }) => (dispatch) => {
   } catch (e) {
     alert("Unable to view user content!");
     console.error(e);
+  }
+};
+
+export const handleSearch = ({ query, setIsLoading }) => async (dispatch) => {
+  try {
+    setIsLoading(true);
+    const response = await searchUsers(query.trim());
+    dispatch({
+        type: DashboardActions.SET_USERS,
+        payload: response.data
+    });
+  } catch (e) {
+    alert("Unable to search!")
+    console.error(e);
+  } finally {
+    setIsLoading(false);
   }
 }
