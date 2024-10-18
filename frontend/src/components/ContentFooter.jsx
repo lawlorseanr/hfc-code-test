@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { updateContent } from "../services/content.service";
-import { DashboardActions } from "../redux/action-types/dashboard-action-types";
+import { handleUpdateContent } from "../redux/actions/dashboard-actions";
 
 export const ContentFooter = ({ content }) => {
     const dispatch = useDispatch();
@@ -10,34 +9,13 @@ export const ContentFooter = ({ content }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleUpdate = async (status) => {
-        setIsLoading(true);
-        try {
-            const response = await updateContent({
-                contentId: content.id,
-                status
-            });
-            const newContent = response.data;
-            const updatedUsers = users.map((u) => {
-                const contents = u.contents
-                    .map((c) => c.id === newContent.id
-                        ? newContent
-                        : c
-                );
-                return {
-                    ...u,
-                    contents
-                };
-            })
-            dispatch({
-                type: DashboardActions.SET_USERS,
-                payload: updatedUsers
-            });
-        } catch (e) {
-            alert("Unable to update content!")
-            console.error(e);
-        } finally {
-            setIsLoading(false);
-        }
+        dispatch(handleUpdateContent({
+            users,
+            contentId:
+            content.id,
+            status,
+            setIsLoading
+        }))
     }
 
     const Reject = ({ full } = { full: false }) => {
