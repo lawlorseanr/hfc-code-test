@@ -15,32 +15,44 @@ export const onLoadDashboardUsers = () => async (dispatch) => {
 };
 
 export const handleUpdateContent = ({users, contentId, status, setIsLoading}) => async (dispatch) => {
-  setIsLoading(true);
   try {
+    setIsLoading(true);
     const response = await updateContent({
-        contentId,
-        status
+      contentId,
+      status
     });
     const newContent = response.data;
     const updatedUsers = users.map((u) => {
-        const contents = u.contents
-            .map((c) => c.id === newContent.id
-                ? newContent
-                : c
-        );
-        return {
-            ...u,
-            contents
-        };
+      const contents = u.contents
+        .map((c) => c.id === newContent.id
+          ? newContent
+          : c
+      );
+      return {
+        ...u,
+        contents
+      };
     })
     dispatch({
-        type: DashboardActions.SET_USERS,
-        payload: updatedUsers
+      type: DashboardActions.SET_USERS,
+      payload: updatedUsers
     });
   } catch (e) {
-      alert("Unable to update content!")
-      console.error(e);
+    alert("Unable to update content!")
+    console.error(e);
   } finally {
     setIsLoading(false);
+  }
+};
+
+export const handleSeeContent = ({ id }) => (dispatch) => {
+  try {
+    dispatch({
+      type: DashboardActions.SHOW_CONTENT_FOR,
+      payload: id
+    })
+  } catch (e) {
+    alert("Unable to view user content!");
+    console.error(e);
   }
 }

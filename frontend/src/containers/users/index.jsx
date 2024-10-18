@@ -12,12 +12,16 @@ export const Users = () => {
         <UsersListContainer>
             <Loading>
                 <BodyContainer>
-                    {users.length ? users.map((user) => (
-                        <UserContainer key={`user-${user.id}`}>
-                            <h3>{user.name}</h3>
-                            <UserContent user={user} />
-                        </UserContainer>
-                    )) : <div>No users found.</div>}
+                    {
+                        users.length 
+                            ? users.map((user) => (
+                                <UserContainer key={`user-${user.id}`}>
+                                    <h3>{user.name}</h3>
+                                    <UserContent user={user} />
+                                </UserContainer>
+                            )) 
+                            : <div>No users found.</div>
+                    }
                 </BodyContainer>
             </Loading>
         </UsersListContainer>

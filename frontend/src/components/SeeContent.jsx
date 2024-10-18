@@ -1,16 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { DashboardActions } from "../redux/action-types/dashboard-action-types";
 import styled from "styled-components";
+import { handleSeeContent } from "../redux/actions/dashboard-actions";
 
 export const SeeContent = ({ id }) => {
     const dispatch = useDispatch();
 
     const onClick = () => {
-        dispatch({
-            type: DashboardActions.SHOW_CONTENT_FOR,
-            payload: id
-        })
+        dispatch(handleSeeContent({ id }))
     }
 
     return (
